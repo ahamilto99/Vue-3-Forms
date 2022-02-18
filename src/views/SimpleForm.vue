@@ -2,7 +2,6 @@
   <div>
     <h1>Create an event</h1>
     <form>
-
       <BaseSelect
         v-model="event.category"
         label="Select a Category"
@@ -11,77 +10,46 @@
 
       <h3>Name & describe your event</h3>
 
-      <BaseInput
-        v-model="event.title"
-        label="Title"
-        type="text"
-      />
+      <BaseInput v-model="event.title" label="Title" type="text" />
 
-      <BaseInput
-        v-model="event.description"
-        label="Description"
-        type="text"
-      />
+      <BaseInput v-model="event.description" label="Description" type="text" />
 
       <h3>Where is your event?</h3>
 
-      <BaseInput
-        v-model="event.location"
-        label="Location"
-        type="text"
-      />
+      <BaseInput v-model="event.location" label="Location" type="text" />
 
       <h3>Are pets allowed?</h3>
       <div>
-        <input
-          type="radio"
-          v-model="event.pets"
-          :value="1"
-          name="pets"
-        />
+        <input type="radio" v-model="event.pets" :value="1" name="pets" />
         <label>Yes</label>
       </div>
 
       <div>
-        <input
-          type="radio"
-          v-model="event.pets"
-          :value="0"
-          name="pets"
-        />
+        <input type="radio" v-model="event.pets" :value="0" name="pets" />
         <label>No</label>
       </div>
 
       <h3>Extras</h3>
       <div>
-        <input
-          type="checkbox"
-          v-model="event.extras.catering"
-          class="field"
-        />
-        <label>Catering</label>
+        <BaseCheckbox v-model="event.extras.catering" label="Catering" />
       </div>
 
       <div>
-        <input
-          type="checkbox"
-          v-model="event.extras.music"
-          class="field"
-        />
-        <label>Live music</label>
+        <BaseCheckbox v-model="event.extras.music" label="Live Music" />
       </div>
 
-      <button
-        class="button -fill-gradient"
-        type="submit"
-      >Submit</button>
+      <button class="button -fill-gradient" type="submit">
+        Submit
+      </button>
     </form>
+
+    <pre>{{ event }}</pre>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       categories: [
         'sustainability',
