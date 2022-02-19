@@ -1,16 +1,40 @@
 {
-    "events": [
-        {
-            "id": 1,
-            "category": "animal welfare",
-            "title": "Frenz of bunz",
-            "description": "🐰 an frenz",
-            "location": "Zoom - stay safe",
-            "pets": 1,
-            "extras": {
-                "catering": true,
-                "music": true
-            }
-        }
-    ]
+  "events": [
+    {
+      "id": 1,
+      "category": "animal welfare",
+      "title": "Frenz of bunz",
+      "description": "🐰 an frenz",
+      "location": "Zoom - stay safe",
+      "pets": 1,
+      "extras": {
+        "catering": true,
+        "music": true
+      }
+    },
+    {
+      "category": "housing",
+      "title": "New House",
+      "description": "We're building a house.",
+      "location": "Ottawa, ON",
+      "pets": 0,
+      "extras": {
+        "catering": true,
+        "music": true
+      },
+      "id": 2
+    },
+    {
+      "category": "nature",
+      "title": "Flower Day",
+      "description": "Rose, daisies and tulips.",
+      "location": "Otawa, ON",
+      "pets": 0,
+      "extras": {
+        "catering": true,
+        "music": true
+      },
+      "id": 3
+    }
+  ]
 }
