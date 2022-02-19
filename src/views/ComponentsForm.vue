@@ -17,18 +17,10 @@
         error="This field is required"
       />
 
-      <BaseInput
-        label="Description"
-        v-model="event.description"
-        type="text"
-      />
+      <BaseInput label="Description" v-model="event.description" type="text" />
 
       <h3>Where is your event?</h3>
-      <BaseInput
-        label="Location"
-        v-model="event.location"
-        type="text"
-      />
+      <BaseInput label="Location" v-model="event.location" type="text" />
 
       <h3>Are pets allowed?</h3>
       <BaseRadioGroup
@@ -54,25 +46,15 @@
 
       <h3>Extras</h3>
       <div>
-        <BaseCheckbox
-          label="Catering"
-          v-model="event.extras.catering"
-        />
+        <BaseCheckbox label="Catering" v-model="event.extras.catering" />
       </div>
 
       <div>
-        <BaseCheckbox
-          label="Live music"
-          v-model="event.extras.music"
-        />
+        <BaseCheckbox label="Live music" v-model="event.extras.music" />
       </div>
 
       <div>
-        <BaseButton
-          type="submit"
-          class="-fill-gradient"
-          something="else"
-        >
+        <BaseButton type="submit" class="-fill-gradient" something="else">
           Submit
         </BaseButton>
       </div>
@@ -84,7 +66,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       categories: [
         'sustainability',
@@ -109,7 +91,7 @@ export default {
     }
   },
   methods: {
-    createEvent () {
+    createEvent() {
       console.log('submit')
     }
   }

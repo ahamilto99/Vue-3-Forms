@@ -1,87 +1,45 @@
 <template>
   <div>
     <h1>Create an event</h1>
-    <form>
-
-      <label>Select a category</label>
-      <select v-model="event.category">
-        <option
-          v-for="option in categories"
-          :value="option"
-          :key="option"
-          :selected="option === event.category"
-        >{{ option }}</option>
-      </select>
+    <form @submit.prevent="sendForm">
+      <BaseSelect
+        v-model="event.category"
+        label="Select a Category"
+        :options="categories"
+      />
 
       <h3>Name & describe your event</h3>
 
-      <label>Title</label>
-      <input
-        v-model="event.title"
-        type="text"
-        placeholder="Title"
-        class="field"
-      >
+      <BaseInput v-model="event.title" label="Title" type="text" />
 
-      <label>Description</label>
-      <input
-        v-model="event.description"
-        type="text"
-        placeholder="Description"
-        class="field"
-      />
+      <BaseInput v-model="event.description" label="Description" type="text" />
 
       <h3>Where is your event?</h3>
 
-      <label>Location</label>
-      <input
-        v-model="event.location"
-        type="text"
-        placeholder="Location"
-        class="field"
-      />
+      <BaseInput v-model="event.location" label="Location" type="text" />
 
       <h3>Are pets allowed?</h3>
       <div>
-        <input
-            type="radio"
-            v-model="event.pets"
-            :value="1"
-            name="pets"
-          />
-        <label>Yes</label>
-      </div>
-
-      <div>
-        <input
-          type="radio"
+        <BaseRadioGroup
           v-model="event.pets"
-          :value="0"
           name="pets"
+          :options="petOptions"
+          vertical
         />
-        <label>No</label>
       </div>
 
       <h3>Extras</h3>
       <div>
-        <input
-          type="checkbox"
-          v-model="event.extras.catering"
-          class="field"
-        />
-        <label>Catering</label>
+        <BaseCheckbox v-model="event.extras.catering" label="Catering" />
       </div>
 
       <div>
-        <input
-          type="checkbox"
-          v-model="event.extras.music"
-          class="field"
-        />
-        <label>Live music</label>
+        <BaseCheckbox v-model="event.extras.music" label="Live Music" />
       </div>
 
-      <button type="submit">Submit</button>
+      <button class="button -fill-gradient" type="submit">
+        Submit
+      </button>
     </form>
 
     <pre>{{ event }}</pre>
@@ -89,8 +47,9 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  data () {
+  data() {
     return {
       categories: [
         'sustainability',
@@ -111,6 +70,23 @@ export default {
           catering: false,
           music: false
         }
+      },
+      petOptions: [
+        { label: 'Yes', value: 1 },
+        { label: 'No', value: 0 }
+      ]
+    }
+  },
+  methods: {
+    async sendForm(e) {
+      try {
+        const response = await axios.post(
+          'https://my-json-server.typicode.com/Code-Pop/Vue-3-Forms/events',
+          this.event
+        )
+        console.log('Response', response)
+      } catch (err) {
+        console.log('Error', err)
       }
     }
   }
