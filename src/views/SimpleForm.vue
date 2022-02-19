@@ -81,7 +81,7 @@ export default {
     async sendForm(e) {
       try {
         const response = await axios.post(
-          'https://my-json-server.typicode.com/Code-Pop/Vue-3-Forms/events',
+          'http://localhost:3000/events',
           this.event
         )
         console.log('Response', response)
